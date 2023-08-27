@@ -1,0 +1,11 @@
+# Classname (must be first)
+classname Compressor
+
+# Display information
+title   Compressor
+symbol  Co
+
+# Settings
+slider  Level   0.5
+slider  Cutoff  0.5
+slider  Amount  0.5

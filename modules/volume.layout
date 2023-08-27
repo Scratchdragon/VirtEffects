@@ -1,0 +1,9 @@
+# Classname (must be first)
+classname Volume
+
+# Display information
+title   Volume
+symbol  V
+
+# Settings
+slider  Volume  0.25

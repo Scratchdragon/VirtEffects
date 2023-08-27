@@ -1,0 +1,6 @@
+# Classname (must be first)
+classname Output
+
+# Display information
+title   Output
+symbol  o
