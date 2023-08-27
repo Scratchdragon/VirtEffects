@@ -5,8 +5,8 @@ def lerp(b, a, c):
 
 class Compressor(Module):
     def processAudio(self, data, chunk, player):
-        level = self.getSetting("Level") * 800 - 400
+        level = self.getSetting("Level") * 5000 - 2500
         for i in range(len(data)):
-            if data[i] > self.getSetting("Cutoff") * 800 - 400:
+            if data[i] > self.getSetting("Cutoff") * 5000 - 2500:
                 data[i] = lerp(data[i], level, self.getSetting("Amount"))
         return super().processAudio(data, chunk, player)

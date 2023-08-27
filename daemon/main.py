@@ -3,6 +3,7 @@ import numpy as np
 import os, sys
 from module import *
 import time
+import multiprocessing
 
 # Load all the modules
 modules = {}
@@ -73,7 +74,6 @@ p = pyaudio.PyAudio()
 
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True, frames_per_buffer=CHUNK)
 player = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, output=True, frames_per_buffer=CHUNK)
-
 
 def update(data, chunk, player):
     start = -1
