@@ -8,6 +8,9 @@
 
 #include <stdio.h>
 
+#define MINIAUDIO_IMPLEMENTATION
+#include "miniaudio.h"
+
 using namespace std;
 
 #define GRID_SIZE 5
@@ -19,6 +22,17 @@ vector<string> modTypes;
 Module modules[GRID_SIZE * GRID_SIZE];
 int selected = -1;
 bool selectingOut = false;
+
+// Miniaudio data callback
+void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
+    MA_ASSERT(pDevice->capture.format == pDevice->playback.format);
+    MA_ASSERT(pDevice->capture.channels == pDevice->playback.channels);
+
+    
+
+    /* In this example the format and channel count are the same for both input and output which means we can just memcpy(). */
+    MA_COPY_MEMORY(pOutput, pInput, frameCount * ma_get_bytes_per_frame(pDevice->capture.format, pDevice->capture.channels));
+}
 
 void SaveBoard() {
     string file = "";
