@@ -403,8 +403,15 @@ int main() {
     ma_device_start(&device);
 
     // Init raylib and open the window
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_INTERLACED_HINT);
-    InitWindow(960, 640, "VirtEffects");
+    SetConfigFlags(FLAG_WINDOW_UNDECORATED | FLAG_INTERLACED_HINT);
+    InitWindow(700, 400, "VirtEffects");
+
+    int monitor = GetCurrentMonitor();
+    window = {
+        (float)GetMonitorWidth(monitor),
+        (float)GetMonitorHeight(monitor)
+    };
+    SetWindowSize(window.x, window.y);
     
     // Load module types
     FilePathList modDir = LoadDirectoryFiles("modules");
