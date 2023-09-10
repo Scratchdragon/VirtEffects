@@ -1,9 +1,0 @@
-# Classname (must be first)
-classname Pitch
-
-# Display information
-title   PitchShifter
-symbol  Ps
-
-# Settings
-slider  Pitch  0.5

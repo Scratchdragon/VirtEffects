@@ -5,8 +5,16 @@
 #include <stdio.h>
 
 #include "module.cpp"
+#include "inbuilt.hpp"
 
 using namespace std;
+
+// Inbuilt modules array
+InbuiltNode inbuiltNodes[] = {
+    (InbuiltNode){&node_volume},
+    (InbuiltNode){&node_display},
+    (InbuiltNode){&node_distortion}
+};
 
 vector<string> Stringify(const char ** list, int size) {
     vector<string> vec;
@@ -58,7 +66,7 @@ Module LoadModule(string file) {
                 (Setting){
                     args[1],
                     SLIDER,
-                    stof(args[2])
+                    (u8)(stof(args[2]) * 255)
                 }
             );
         }
@@ -67,9 +75,12 @@ Module LoadModule(string file) {
                 (Setting){
                     args[1],
                     SWITCH,
-                    stof(args[2])
+                    (u8)(stof(args[2]) * 255)
                 }
             );
+        }
+        if(opt == "inbuilt") {
+            module.SetProcess(inbuiltNodes[stoi(args[1])]._func);
         }
     }
     return module;

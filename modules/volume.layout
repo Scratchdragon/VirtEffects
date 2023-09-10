@@ -6,4 +6,7 @@ title   Volume
 symbol  V
 
 # Settings
-slider  Volume  0.25
+slider  Volume  0.5
+
+# Reference to inbuilt node method
+inbuilt 0

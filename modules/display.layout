@@ -1,0 +1,8 @@
+# Classname (must be first)
+classname Display
+
+# Display information
+title   Display
+symbol  d
+
+inbuilt 1

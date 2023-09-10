@@ -5,6 +5,8 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "span": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "compare": "cpp",
+        "cstdint": "cpp"
     }
 }

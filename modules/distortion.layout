@@ -1,0 +1,13 @@
+# Classname (must be first)
+classname Distortion
+
+# Display information
+title   Distortion
+symbol  Ds
+
+# Settings
+slider  Cutoff  0.1
+slider  Clip    0.5
+slider  Fuzz    0.5
+
+inbuilt 2
