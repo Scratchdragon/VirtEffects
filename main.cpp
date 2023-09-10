@@ -412,6 +412,7 @@ int main() {
         (float)GetMonitorHeight(monitor)
     };
     SetWindowSize(window.x, window.y);
+    SetWindowPosition(0, 0);
     
     // Load module types
     FilePathList modDir = LoadDirectoryFiles("modules");
