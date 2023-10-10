@@ -11,6 +11,7 @@ typedef struct InbuiltNode {
 ma_frame node_volume(Module * module, ma_frame frame, int index, u32 frame_count){
     return (frame * module->settings[0]._value + 1) / 126;
 }
+
 ma_frame node_display(Module * module, ma_frame frame, int index, u32 frame_count){
     if(index==0) {
         module->buffer[998] = module->buffer[999];
@@ -35,4 +36,17 @@ ma_frame node_distortion(Module * module, ma_frame frame, int index, u32 frame_c
     else
         frame = (int)module->settings[1]._value * 10;
     return frame * polar;
+}
+
+ma_frame node_compressor(Module * module, ma_frame frame, int index, u32 frame_count){
+    polar = frame > 0 ? 1 : -1;
+    // Apply compression
+    frame *= polar;
+    if(frame < (int)module->settings[1]._value * 5)
+        return frame * polar;
+    return Lerp(frame, module->settings[0]._value * 10, module->settings[2].value()) * polar;
+}
+
+ma_frame node_sine(Module * module, ma_frame frame, int index, u32 frame_count){
+    return sin((float)index * PI * round((float)module->settings[1]._value / 10) * 2 / (float)frame_count) * module->settings[0]._value * 10;
 }

@@ -1,6 +1,3 @@
-# Classname (must be first)
-classname Compressor
-
 # Display information
 title   Compressor
 symbol  Co
@@ -9,3 +6,5 @@ symbol  Co
 slider  Level   0.5
 slider  Cutoff  0.5
 slider  Amount  0.5
+
+inbuilt 3

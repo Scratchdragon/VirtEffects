@@ -12,7 +12,15 @@
 #include "colors.h"
 #include "loader.cpp"
 
+#include <LuaCpp/LuaCpp.hpp>
+
+using namespace LuaCpp;
+using namespace LuaCpp::Registry;
+using namespace LuaCpp::Engine;
 using namespace std;
+
+// Check for debug mode
+bool DEBUG = strcmp(getenv("DEBUG"), "1") == 0;
 
 Vector2 window;
 Vector2 mousePos;
@@ -404,11 +412,10 @@ int main() {
 
     // Init raylib and open the window
     SetConfigFlags(FLAG_WINDOW_UNDECORATED | FLAG_INTERLACED_HINT);
-    InitWindow(700, 400, "VirtEffects");
-
+    InitWindow(640, 480, "VirtEffects");
     int monitor = GetCurrentMonitor();
     window = {
-        (float)GetMonitorWidth(monitor),
+        (float)GetMonitorHeight(monitor) * 1.5f,
         (float)GetMonitorHeight(monitor)
     };
     SetWindowSize(window.x, window.y);
@@ -419,6 +426,7 @@ int main() {
     vector<string> files = Stringify(modDir.paths, modDir.count);
     for(string file : files) {
         int count = 0;
+        if(TextSplit(file.c_str(), '/', &count)[count-1][0] == '_' && !DEBUG) continue;
         const char ** split = TextSplit(file.c_str(), '.', &count);
         if(count >= 2 && (string)split[count - 1] == "layout") {
             modTypes.push_back(file);

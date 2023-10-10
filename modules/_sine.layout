@@ -1,9 +1,10 @@
 # Display information
-title   Volume
-symbol  V
+title   Sine
+symbol  _s
 
 # Settings
 slider  Volume  0.5
+slider  Freq  0.2
 
 # Reference to inbuilt node method
-inbuilt 0
+inbuilt 4

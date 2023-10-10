@@ -1,0 +1,9 @@
+# Display information
+title   LuaNode
+symbol  Lu
+
+# Settings
+slider  Volume  0.5
+
+# Link to Lua script
+lua modules/lua/luatest.lua

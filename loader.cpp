@@ -13,7 +13,9 @@ using namespace std;
 InbuiltNode inbuiltNodes[] = {
     (InbuiltNode){&node_volume},
     (InbuiltNode){&node_display},
-    (InbuiltNode){&node_distortion}
+    (InbuiltNode){&node_distortion},
+    (InbuiltNode){&node_compressor},
+    (InbuiltNode){&node_sine}
 };
 
 vector<string> Stringify(const char ** list, int size) {
